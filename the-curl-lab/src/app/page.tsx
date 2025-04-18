@@ -35,13 +35,13 @@ export default function HeroSection() {
               Curls{" "}
             </h1>
             <p className="text-lg md:text-xl  text-gray-200">
-              Upload your photo to{" "}
+              Upload your photo for FREE to{" "}
               <span className="font-bold text-[#fabec0]">
                 discover your exact curl type
               </span>
               , porosity, and care needs with our{" "}
-              <span className="font-bold">AI-powered Strand Scan™</span>. Get a
-              personalized, science-backed routine in minutes — no more
+              <span className="font-bold">breakthrough Strand Scan™ Technology</span>. Get a
+              personalized, science-backed routine based on your exact hair type in minutes — no more
               guessing,{" "}
               <span className="font-bold text-[#fabec0]">
                 no more wasted products
@@ -51,7 +51,7 @@ export default function HeroSection() {
 
             <div className="pt-4">
               <Link
-                href="/get-started"
+                href="/analysis"
                 className="inline-block bg-white text-[#493979] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition duration-300 transform hover:scale-105">
                 Analyze My Curls{" "}
               </Link>
