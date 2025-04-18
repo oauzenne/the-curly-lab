@@ -265,9 +265,8 @@ export default function AnalysisPage() {
                     Moisture Retention System
                   </h4>
                   <p className="text-sm text-[#493979] mb-3">
-                    {porosity === "High"
-                      ? "Seals in the hydration high porosity hair loses too quickly"
-                      : "Balances moisture absorption and retention for low porosity hair"}
+                    Seals in hydration for long-lasting, balanced moisture.
+
                   </p>
                   <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get Moisture Plan ($4.99)
@@ -278,10 +277,7 @@ export default function AnalysisPage() {
                     Growth & Strength Package
                   </h4>
                   <p className="text-sm text-[#493979] mb-3">
-                    {curlType.includes("3") || curlType.includes("4")
-                      ? "Reduces breakage in tighter type 4 curl patterns"
-                      : "Strengthens delicate type 3 wave structures"}
-                  </p>
+Strengthens hair to reduce breakage for longer locks.                  </p>
                   <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get Growth Plan ($4.99)
                   </button>
@@ -291,7 +287,7 @@ export default function AnalysisPage() {
                     Complete Curl Care System
                   </h4>
                   <p className="text-sm text-[#493979] mb-3">
-                    Everything you need for long perfect curls (Save 35%)
+                    Everything you need for long perfect curls (Save 20%)
                   </p>
                   <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get  System ($7.99)
@@ -309,7 +305,7 @@ export default function AnalysisPage() {
             <div className="px-8 py-6 border-t border-gray-200">
               <button
                 onClick={resetFlow}
-                className="text-purple-600 hover:text-purple-800 font-medium">
+                className="text-[#493979] hover:text-purple-800 font-medium">
                 &larr; Back to Home
               </button>
               <p className="text-xs text-gray-400 mt-4">
