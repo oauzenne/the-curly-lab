@@ -1,6 +1,7 @@
 "use client";
 import { useState, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AnalysisPage() {
   const [step, setStep] = useState<
@@ -66,18 +67,18 @@ export default function AnalysisPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-center mb-12">
+        <Link href="www.thecurllab.com">
+        <div className="flex items-center justify-center mb-5 md:mb-10">
           <Image
             src="/tcl-dark-trans-logo.png"
             alt="Curl Lab Light Logo"
             width={640}
             height={160}
-            className="h-24 md:h-32 w-auto"
+            className="h-auto md:h-32 w-auto"
             priority
           />
-
         </div>
-
+        </Link>
         {step === "upload" && (
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <h2 className="text-3xl font-semibold text-[#493979] mb-6">
@@ -120,7 +121,7 @@ export default function AnalysisPage() {
 
         {step === "info" && (
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-2xl font-semibold text-[#493979] mb-6">
+            <h2 className="text-2xl text-center md:text-left font-semibold text-[#493979] mb-6">
               Complete Your Analysis
             </h2>
             <form onSubmit={handleSubmit}>
@@ -174,15 +175,14 @@ export default function AnalysisPage() {
                     htmlFor="consent"
                     className="ml-3 block text-sm text-gray-700">
                     I agree to the processing of my data for hair analysis and
-                    to receive personalized recommendations. I understand this
-                    is an AI-powered estimate and may not be 100% accurate.
+                    to receive personalized recommendations.
                   </label>
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-[#493979] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#fabec0] transition duration-200 cursor-pointer">
+                className="w-full bg-[#493979] text-white py-3 px-6 rounded-lg font-medium hover:bg-[#fabec0] transition duration-200 cursor-pointer hover:cursor-grab">
                 Get My Hair Analysis
               </button>
             </form>
@@ -223,7 +223,7 @@ export default function AnalysisPage() {
             </div>
             <button
               onClick={resetFlow}
-              className="bg-purple-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-purple-700 transition duration-200">
+              className="bg-purple-600 text-white py-3 px-6 rounded-lg cursor-pointer hover:cursor-grab font-medium hover:bg-purple-700 transition duration-200">
               Try Again
             </button>
             <p className="text-xs text-gray-400 mt-6">
@@ -240,7 +240,7 @@ export default function AnalysisPage() {
         {step === "results" && (
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="p-8">
-              <h2 className="text-3xl font-bold text-[#493979] mb-2">
+              <h2 className="text-3xl font-bold text-[#493979] text-mb-2">
                 Your Hair Analysis,{" "}
                 <span className="text-[#ff8589]">{userData.name}</span>
               </h2>
@@ -257,39 +257,39 @@ export default function AnalysisPage() {
             </div>
 
             <div className="p-8 bg-[#493979] border-t border-purple-700">
-              <h3 className="text-4xl font-medium text-white mb-10 text-center">
-                Personalized Care Plans for <br /> <span className="text-[#ff8589] text-2xl font-bold bg-white rounded-lg px-2 py-2 inline-block mt-2">Type {curlType}</span> <span className="text-white text-2xl inline-block pt-2 mt-2 mr-2">Curls with </span><span className="text-[#ff8589] text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">{porosity} Porosity</span>              </h3>
+              <h3 className="text-2xl md:text-4xl font-medium text-white mb-10 text-center">
+                Personalized Care Plans for <br /> <span className="text-[#ff8589] text-xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">Type {curlType}</span> <span className="text-white inline-block pt-2 mt-2 mr-2">Curls with </span><span className="text-[#ff8589] text-xl md:text-2xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">{porosity} Porosity</span>              </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                    Moisture Retention System
-                  </h4>
+                  Moisture Retention System
+                </h4>
                   <p className="text-sm text-[#493979] mb-3">
                     Seals in hydration for long-lasting, balanced moisture.
 
                   </p>
-                  <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
+                  <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition cursor-pointer hover:cursor-grab">
                     Get Moisture Plan ($4.99)
                   </button>
                 </div>
 
                 <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                    Growth & Strength Package
-                  </h4>
+                  Growth & Strength Package
+                </h4>
                   <p className="text-sm text-[#493979] mb-3">
-Strengthens hair to reduce breakage for longer locks.                  </p>
-                  <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
+                    Strengthens hair to reduce breakage for longer locks.</p>
+                  <button className="cursor-pointer hover:cursor-grab w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get Growth Plan ($4.99)
                   </button>
                 </div>
 
                 <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                    Complete Curl Care System
-                  </h4>
+                  Complete Curl Care System
+                </h4>
                   <p className="text-sm text-[#493979] mb-3">
                     Everything you need for long perfect curls (Save 20%)
                   </p>
-                  <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
+                  <button className="cursor-pointer hover:cursor-grab w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get  System ($7.99)
                   </button>
                 </div>
