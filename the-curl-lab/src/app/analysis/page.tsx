@@ -3,11 +3,18 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+type UserData = {
+  name: string;
+  email: string;
+  photo: File | null;
+  consent: boolean;
+};
+
 export default function AnalysisPage() {
   const [step, setStep] = useState<
     "upload" | "info" | "loading" | "results" | "error"
   >("upload");
-  const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState<UserData>({
     name: "",
     email: "",
     photo: null as File | null,
@@ -39,7 +46,7 @@ export default function AnalysisPage() {
         return;
       }
 
-      const simulatedAnalysis = generateSimulatedAnalysis(userData.name);
+      const simulatedAnalysis = generateSimulatedAnalysis();
       setAnalysis(simulatedAnalysis);
 
       const { extractedCurlType, extractedPorosity } =
@@ -68,16 +75,16 @@ export default function AnalysisPage() {
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <Link href="www.thecurllab.com">
-        <div className="flex items-center justify-center mb-5 md:mb-10">
-          <Image
-            src="/tcl-dark-trans-logo.png"
-            alt="Curl Lab Light Logo"
-            width={640}
-            height={160}
-            className="h-auto md:h-32 w-auto"
-            priority
-          />
-        </div>
+          <div className="flex items-center justify-center mb-5 md:mb-10">
+            <Image
+              src="/tcl-dark-trans-logo.png"
+              alt="Curl Lab Light Logo"
+              width={640}
+              height={160}
+              className="h-auto md:h-32 w-auto"
+              priority
+            />
+          </div>
         </Link>
         {step === "upload" && (
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
@@ -85,8 +92,10 @@ export default function AnalysisPage() {
               Upload Your Hair Photo
             </h2>
             <p className="text-[#493979] mb-8">
-              <span className="font-bold">Let's see those beautiful curls!</span> <br /> Upload a clear photo that
-              showcases your hair texture.
+              <span className="font-bold">
+                Let&apos;s see those beautiful curls!
+              </span>{" "}
+              <br /> Upload a clear photo that showcases your hair texture.
             </p>
 
             <form onSubmit={(e) => e.preventDefault()}>
@@ -102,7 +111,9 @@ export default function AnalysisPage() {
               />
               <label
                 htmlFor="hairPhoto"
-                className="cursor-pointer bg-[#493979] text-[#FFFFFF] py-3 px-6 rounded-lg font-medium hover:bg-[#ff9a9e] transition duration-200 inline-block mb-4">   Choose Photo
+                className="cursor-pointer bg-[#493979] text-[#FFFFFF] py-3 px-6 rounded-lg font-medium hover:bg-[#ff9a9e] transition duration-200 inline-block mb-4">
+                {" "}
+                Choose Photo
               </label>
               {userData.photo && (
                 <p className="text-sm text-gray-500 mt-2">
@@ -112,9 +123,9 @@ export default function AnalysisPage() {
             </form>
 
             <p className="text-xs text-gray-400 mt-8">
-              By continuing, you’ll receive helpful insights powered by AI.
-              While it's designed to be as accurate as possible, it may not be
-              perfect every time.{" "}
+              By continuing, you&apos;ll receive helpful insights powered by AI.
+              While it&apos;s designed to be as accurate as possible, it may not
+              be perfect every time.{" "}
             </p>
           </div>
         )}
@@ -189,9 +200,7 @@ export default function AnalysisPage() {
 
             <p className="text-xs text-gray-400 mt-6">
               To request data deletion, email us at{" "}
-              <a
-                href="mailto:info@thecurllab.com"
-                className="text-purple-600">
+              <a href="mailto:info@thecurllab.com" className="text-purple-600">
                 info@thecurllab.com
               </a>
             </p>
@@ -228,9 +237,7 @@ export default function AnalysisPage() {
             </button>
             <p className="text-xs text-gray-400 mt-6">
               For persistent issues, contact us at{" "}
-              <a
-                href="mailto:info@thecurllab.com"
-                className="text-purple-600">
+              <a href="mailto:info@thecurllab.com" className="text-purple-600">
                 info@thecurllab.com
               </a>
             </p>
@@ -252,45 +259,59 @@ export default function AnalysisPage() {
                 className="prose max-w-none"
                 dangerouslySetInnerHTML={{ __html: analysis }}
               />
-
-
             </div>
 
             <div className="p-8 bg-[#493979] border-t border-purple-700">
               <h3 className="text-2xl md:text-4xl font-medium text-white mb-10 text-center">
-                Personalized Care Plans for <br /> <span className="text-[#ff8589] text-xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">Type {curlType}</span> <span className="text-white inline-block pt-2 mt-2 mr-2">Curls with </span><span className="text-[#ff8589] text-xl md:text-2xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">{porosity} Porosity</span>              </h3>
+                Personalized Care Plans for <br />{" "}
+                <span className="text-[#ff8589] text-xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
+                  Type {curlType}
+                </span>{" "}
+                <span className="text-white inline-block pt-2 mt-2 mr-2">
+                  Curls with{" "}
+                </span>
+                <span className="text-[#ff8589] text-xl md:text-2xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
+                  {porosity} Porosity
+                </span>{" "}
+              </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                  Moisture Retention System
-                </h4>
+                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">
+                  {" "}
+                  <h4 className="font-medium text-[#493979] mb-2">
+                    Moisture Retention System
+                  </h4>
                   <p className="text-sm text-[#493979] mb-3">
                     Seals in hydration for long-lasting, balanced moisture.
-
                   </p>
                   <button className="w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition cursor-pointer hover:cursor-grab">
                     Get Moisture Plan ($4.99)
                   </button>
                 </div>
 
-                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                  Growth & Strength Package
-                </h4>
+                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">
+                  {" "}
+                  <h4 className="font-medium text-[#493979] mb-2">
+                    Growth & Strength Package
+                  </h4>
                   <p className="text-sm text-[#493979] mb-3">
-                    Strengthens hair to reduce breakage for longer locks.</p>
+                    Strengthens hair to reduce breakage for longer locks.
+                  </p>
                   <button className="cursor-pointer hover:cursor-grab w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
                     Get Growth Plan ($4.99)
                   </button>
                 </div>
 
-                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">                  <h4 className="font-medium text-[#493979] mb-2">
-                  Complete Curl Care System
-                </h4>
+                <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">
+                  {" "}
+                  <h4 className="font-medium text-[#493979] mb-2">
+                    Complete Curl Care System
+                  </h4>
                   <p className="text-sm text-[#493979] mb-3">
                     Everything you need for long perfect curls (Save 20%)
                   </p>
                   <button className="cursor-pointer hover:cursor-grab w-full bg-[#493979] text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-purple-700 transition">
-                    Get  System ($7.99)
+                    Get System ($7.99)
                   </button>
                 </div>
               </div>
@@ -298,7 +319,10 @@ export default function AnalysisPage() {
 
             <div className="mt-8 m-10 text-[#493979]">
               <p>
-                <strong>Note:</strong> This AI-generated analysis is an estimation and for informational purposes only; The Curly Lab is not liable for any adverse reactions, product performance, or outcomes.
+                <strong>Note:</strong> This AI-generated analysis is an
+                estimation and for informational purposes only; The Curly Lab is
+                not liable for any adverse reactions, product performance, or
+                outcomes.
               </p>
             </div>
 
@@ -346,7 +370,7 @@ function extractHairProperties(analysisText: string) {
   return { extractedCurlType, extractedPorosity };
 }
 
-function generateSimulatedAnalysis(name: string): string {
+function generateSimulatedAnalysis(): string {
   return `
     <div class="space-y-6 text-[#493979]">
       <div>
@@ -367,7 +391,7 @@ function generateSimulatedAnalysis(name: string): string {
   `;
 }
 
-function storeDataLocally(userData: any, analysis: string) {
+function storeDataLocally(userData: UserData, analysis: string) {
   const dataToStore = {
     user: {
       name: userData.name,
