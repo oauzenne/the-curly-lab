@@ -275,7 +275,7 @@ export default function AnalysisPage() {
                 </span>{" "}
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex flex-col md:flex-row flex-wrap gap-4">
                 <div className="p-4 bg-[#fff1f2] rounded-lg shadow-sm border border-gray-200 text-center flex flex-col items-center">
                   {" "}
                   <h4 className="font-medium text-[#493979] mb-2">
