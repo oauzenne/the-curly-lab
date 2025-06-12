@@ -22,27 +22,27 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
-        <div className="absolute top-6 w-full flex justify-between items-center px-6 md:top-12 md:px-12 z-20">
+        <div className="absolute top-4 md:top-12 w-full flex flex-col md:flex-row items-center justify-between gap-2 px-4 md:px-12 z-20">
           <Image
             src="/curl-lab-logo-white-trans.png"
             alt="The Curl Lab Logo"
-            width={240}
-            height={80}
-            className="h-20 md:h-24 w-auto top-6 md:top-12"
+            width={180}
+            height={60}
+            className="h-12 w-auto md:h-24"
             priority
           />
 
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-white text-[#2E1A47] font-semibold py-4 px-8 rounded-xl shadow-md hover:bg-[#fdf4f8] hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer tracking-wide mt-1">
+            className="hidden md:block bg-white text-[#2E1A47] font-semibold py-3 px-6 rounded-xl shadow-md hover:bg-[#fdf4f8] hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer tracking-wide">
             Contact Us
           </button>
         </div>
 
-        <div className="relative z-10 max-w-7xl md:left-12 h-screen flex flex-col justify-evenly md:pt-40 pt-32 md:pt-32">
-          <div className="flex flex-col md:flex-row gap-8 w-screen max-h-full items-center px-10 md:px-0">
-            <div className="text-white space-y-6 md:w-[50%]">
-              <h1 className="text-3xl text-center md:text-left md:text-5xl lg:text-6xl font-bold leading-normal">
+        <div className="relative z-10 max-w-7xl md:left-12 h-screen flex flex-col justify-evenly md:pt-40 pt-2 md:pt-32 md:pt-32">
+          <div className="mt-10 md:mt-0 flex flex-col md:flex-row gap-8 w-screen max-h-full items-center px-10 md:px-0">
+            <div className="mb-10 md:mb-auto text-lg md:text-base text-white order-2 md:order-1 space-y-6 md:w-[50%]">
+              <h1 className="text-3xl text-center md:text-left md:text-5xl lg:text-6xl font-bold leading-normal flex-grow">
                 Unlock <span className="font-light"> the Science </span> of Your
                 Curls{" "}
               </h1>
@@ -63,22 +63,22 @@ export default function HeroSection() {
                 .{" "}
               </p>
 
-              <div className="pt-4">
+              <div className="flex justify-center w-full md:pt-4 md:justify-start">
                 <Link
                   href="/analysis"
-                  className="inline-block bg-white text-[#493979] hover:bg-gray-100 hover:shadow-xl px-8 py-4 rounded-lg font-bold text-lg transition duration-300 transform hover:scale-105 cursor-pointer">
+                  className="inline-flex bg-white text-[#493979] items-center justify-center w-full md:w-auto hover:bg-gray-100 hover:shadow-xl px-8 py-4 rounded-lg font-bold text-lg transition duration-300 transform hover:scale-105 cursor-pointer">
                   Analyze My Curls{" "}
                 </Link>
               </div>
             </div>
 
-            <div className="hidden md:block relative p-10 md:w-[50%] text-center">
+            <div className="order-1 md:order-2 md:block relative p-0 md:w-[50%] text-center">
               <Image
                 src="/curl-analyzer.png"
                 alt="Curl Analyzer"
                 width={500}
                 height={500}
-                className="inline-block object-contain"
+                className="w-40 h-40 md:w-[500px] md:h-[500px] inline-block object-contain mx-auto"
                 priority
               />
             </div>
@@ -101,7 +101,6 @@ export default function HeroSection() {
             </h2>
 
             <p className="text-[#2E1A47] mb-3">
-
               <a
                 href="mailto:thecurllab@gmail.com"
                 className="underline hover:text-pink-500">
