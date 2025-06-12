@@ -120,7 +120,7 @@ export default function HeroSection() {
             </p>
 
             <p className="text-sm text-gray-500">
-              We'll get back to you soon. Thanks for reaching out!
+              We&apos;ll get back to you soon. Thanks for reaching out!
             </p>
           </div>
         </div>
