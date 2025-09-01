@@ -1,0 +1,18 @@
+mutation CreateExample @auth(level: USER) {
+  example_insert(data: {name: "New Example"})
+}
+
+mutation UpdateExample($id: UUID!, $newName: String!) @auth(level: USER) {
+  example_update(key: {id: $id}, data: {name: $newName})
+}
+
+mutation DeleteExample($id: UUID!) @auth(level: USER) {
+  example_delete(key: {id: $id})
+}
+
+query ListExamples @auth(level: PUBLIC) {
+  examples {
+    id
+    name
+  }
+}

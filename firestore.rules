@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Analyses collection
+    match /analyses/{analysisId} {
+      // Create: only if signed in and the doc's uid matches the caller
+      allow create: if request.auth != null
+                    && request.resource.data.uid == request.auth.uid;
+
+      // Read/Update/Delete: only if signed in and owns the doc
+      allow read, update, delete: if request.auth != null
+                                  && resource.data.uid == request.auth.uid;
+    }
+
+    // Optionally, other collections (public content, config, etc.) can go here
+  }
+}

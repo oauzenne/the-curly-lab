@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Poppins } from 'next/font/google';
+// import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
+
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -30,10 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html>
+      <Analytics />
       <body
-        className={`${geistSans.variable} ${poppins.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${geistSans.variable} ${poppins.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

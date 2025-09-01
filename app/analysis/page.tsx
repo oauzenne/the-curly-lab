@@ -2,6 +2,7 @@
 import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { saveAnalysisToFirebase } from "@/lib/saveAnalysis";
 
 type UserData = {
   name: string;
@@ -34,12 +35,92 @@ export default function AnalysisPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setStep("loading");
+  //   try {
+  //     await new Promise((resolve) => setTimeout(resolve, 2000));
+
+  //     if (!userData.photo) {
+  //       setError("Please upload a photo.");
+  //       setStep("error");
+  //       return;
+  //     }
+
+  //     const simulatedAnalysis = generateSimulatedAnalysis();
+  //     setAnalysis(simulatedAnalysis);
+
+  //     const { extractedCurlType, extractedPorosity } =
+  //       extractHairProperties(simulatedAnalysis);
+  //     setCurlType(extractedCurlType);
+  //     setPorosity(extractedPorosity);
+
+  //     storeDataLocally(userData, simulatedAnalysis);
+  //     setStep("results");
+  //   } catch (err) {
+  //     console.error("Analysis failed:", err);
+  //     setError(
+  //       "Our Strand Scan™ Technology is currently unavailable. Please try again later."
+  //     );
+  //     setStep("error");
+  //   }
+  // };
+
+  // const handleSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   setStep("loading");
+  //   setError("");
+
+  //   try {
+  //     // Simulate analysis (your existing logic)
+  //     await new Promise((resolve) => setTimeout(resolve, 1200));
+
+  //     if (!userData.photo) {
+  //       setError("Please upload a photo.");
+  //       setStep("error");
+  //       return;
+  //     }
+
+  //     const simulatedAnalysis = generateSimulatedAnalysis();
+  //     setAnalysis(simulatedAnalysis);
+
+  //     const { extractedCurlType, extractedPorosity } =
+  //       extractHairProperties(simulatedAnalysis);
+  //     setCurlType(extractedCurlType);
+  //     setPorosity(extractedPorosity);
+
+  //     // 🔐 Save to Firebase (photo → Storage, metadata → Firestore)
+  //     await saveAnalysisToFirebase({
+  //       name: userData.name.trim(),
+  //       email: userData.email.trim(),
+  //       consent: userData.consent,
+  //       analysisHTML: simulatedAnalysis,
+  //       curlType: extractedCurlType,
+  //       porosity: extractedPorosity,
+  //       file: userData.photo, // File object
+  //     });
+
+  //     // Local cache remains if you want it:
+  //     storeDataLocally(userData, simulatedAnalysis);
+
+  //     setStep("results");
+  //   } catch (err: any) {
+  //     console.error("Analysis failed:", err);
+  //     setError(
+  //       err?.message ??
+  //         "Our Strand Scan™ Technology is currently unavailable. Please try again later."
+  //     );
+  //     setStep("error");
+  //   }
+  // };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStep("loading");
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+    setError("");
 
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1200));
       if (!userData.photo) {
         setError("Please upload a photo.");
         setStep("error");
@@ -54,16 +135,30 @@ export default function AnalysisPage() {
       setCurlType(extractedCurlType);
       setPorosity(extractedPorosity);
 
+      await saveAnalysisToFirebase({
+        name: userData.name.trim(),
+        email: userData.email.trim(),
+        consent: userData.consent,
+        analysisHTML: simulatedAnalysis,
+        curlType: extractedCurlType,
+        porosity: extractedPorosity,
+        file: userData.photo,
+      });
+
       storeDataLocally(userData, simulatedAnalysis);
       setStep("results");
-    } catch (err) {
+    } catch (err: unknown) {
       console.error("Analysis failed:", err);
-      setError(
-        "Our Strand Scan™ Technology is currently unavailable. Please try again later."
-      );
+      const message =
+        err instanceof Error
+          ? err.message
+          : typeof err === "string"
+          ? err
+          : "Our Strand Scan™ Technology is currently unavailable. Please try again later.";
+      setError(message);
       setStep("error");
     }
-  };
+  };  
 
   const resetFlow = () => {
     setStep("upload");
@@ -74,7 +169,7 @@ export default function AnalysisPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <Link href="www.thecurllab.com">
+        <Link href="https://thecurllab.com">
           <div className="flex items-center justify-center mb-5 md:mb-10">
             <Image
               src="/tcl-dark-trans-logo.png"
@@ -247,7 +342,7 @@ export default function AnalysisPage() {
         {step === "results" && (
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="p-8">
-              <h2 className="text-3xl font-bold text-[#493979] text-mb-2">
+              <h2 className="text-3xl font-bold text-[#493979] mb-2">
                 Your Hair Analysis,{" "}
                 <span className="text-[#ff8589]">{userData.name}</span>
               </h2>

@@ -1,0 +1,48 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+}
+
+type HairAnalysis @table {
+  user: User!
+  analysisDate: Date!
+  hairType: String!
+  porosity: String!
+  density: String!
+  notes: String
+  photoUrl: String
+}
+
+type Product @table {
+  name: String!
+  brand: String!
+  productType: String!
+  description: String
+  ingredients: String
+  imageUrl: String
+}
+
+type Routine @table {
+  name: String!
+  routineType: String!
+  description: String
+  steps: String
+}
+
+type UserProductRecommendation @table(key: ["user", "product", "hairAnalysis"]) {
+  user: User!
+  product: Product!
+  hairAnalysis: HairAnalysis!
+  recommendedDate: Date!
+  reasonForRecommendation: String
+}
+
+type UserRoutineRecommendation @table(key: ["user", "routine", "hairAnalysis"]) {
+  user: User!
+  routine: Routine!
+  hairAnalysis: HairAnalysis!
+  recommendedDate: Date!
+  reasonForRecommendation: String
+}
