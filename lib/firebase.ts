@@ -5,7 +5,7 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 declare global {
-  var __FIREBASE_APP_CHECK__: boolean | undefined;
+  let __FIREBASE_APP_CHECK__: boolean | undefined;
 }
 
 const firebaseConfig = {
