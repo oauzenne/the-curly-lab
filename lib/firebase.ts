@@ -5,7 +5,8 @@ import { getAuth, signInAnonymously } from "firebase/auth";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 declare global {
-  let __FIREBASE_APP_CHECK__: boolean | undefined;
+  // eslint-disable-next-line no-var
+  var __FIREBASE_APP_CHECK__: boolean | undefined;
 }
 
 const firebaseConfig = {
