@@ -25,7 +25,7 @@ export default function AnalysisPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
-  const [curlType, setCurlType] = useState("TCL4BHL");
+  // const [curlType, setCurlType] = useState("TCL4BHL");
   // const [porosity, setPorosity] = useState("Medium");
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -475,8 +475,8 @@ function generateSimulatedAnalysis(): string {
       
 <div>
   <h4 class="text-lg font-medium mb-2">
-    <strong class="font-bold">Curl Type: </strong>
-    <span class="bg-[#fff1f2] px-2 py-1 rounded">TCL4BHL</span>
+<strong class="font-bold text-[2rem]">Curl Type: </strong>
+    <span class="bg-[#fff1f2] px-2 py-1 rounded text-[2rem]">TCL4BHL</span>
   </h4>
   <p>
 Your curls display tightly coiled, zig-zag patterns typical of Type 4B hair. With low density, there are fewer strands per square inch, which can make styles look lighter or less full.
