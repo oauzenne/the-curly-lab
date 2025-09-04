@@ -472,10 +472,19 @@ function generateSimulatedAnalysis(): string {
         <p class="font-bold">Our Strand Scan™ has analyzed your hair texture and identified these characteristics:</p>
       </div>
       
-      <div>
-        <h4 class="text-lg font-medium mb-2"><strong class="font-bold ">Curl Type: </strong><span class="bg-[#fff1f2] px-2 py-1 rounded">3B with 2A Tendencies (Type 3B) </span></h4>
-        <p >Your hair shows well-defined spiral curls (3B) in the crown area with looser wave patterns (2A) around the perimeter. This combination affects how products perform in different sections.</p>
-      </div>
+<div>
+  <h4 class="text-lg font-medium mb-2">
+    <strong class="font-bold">Curl Type: </strong>
+    <span class="bg-[#fff1f2] px-2 py-1 rounded">TCL4BHL</span>
+  </h4>
+  <p>
+    Your hair shows tightly coiled zig-zag patterns (4B) with fewer strands overall due to low density. 
+    High porosity means your hair absorbs moisture quickly but also loses it just as fast, making 
+    consistent hydration and sealing especially important. Lightweight products help prevent 
+    buildup while maintaining volume and definition.
+  </p>
+</div>
+
       
       <div>
         <h4 class="text-lg font-medium mb-2"><strong class="font-bold">Porosity: </strong><span class="bg-[#fff1f2] px-2 py-1 rounded">Medium-High Porosity</span></h4>        <p class="text-gray-700">Your hair cuticles are moderately raised, meaning it absorbs moisture relatively easily but may lose it quickly without proper sealing.</p>
