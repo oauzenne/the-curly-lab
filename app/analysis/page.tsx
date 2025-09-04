@@ -132,7 +132,7 @@ export default function AnalysisPage() {
 
       const { extractedCurlType, extractedPorosity } =
         extractHairProperties(simulatedAnalysis);
-      setCurlType(extractedCurlType);
+      // setCurlType(extractedCurlType);
       // setPorosity(extractedPorosity);
 
       await saveAnalysisToFirebase({
