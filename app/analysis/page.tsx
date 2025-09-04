@@ -358,9 +358,10 @@ export default function AnalysisPage() {
 
             <div className="p-8 bg-[#493979] border-t border-purple-700">
               <h3 className="text-2xl md:text-4xl font-medium text-white mb-10 text-center">
-                Personalized Hair Care Plans for <br /> {" "}
+                Personalized Hair Care Plans for <br />{" "}
                 <span className="text-[#ff8589] text-xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
-                  TCL Curl Type {curlType}
+                  {/* TCL Curl Type {curlType} */}
+                  TCL4BHL
                 </span>{" "}
                 {/* <span className="text-white inline-block pt-2 mt-2 mr-2">
                   Curls with{" "}
@@ -478,10 +479,8 @@ function generateSimulatedAnalysis(): string {
     <span class="bg-[#fff1f2] px-2 py-1 rounded">TCL4BHL</span>
   </h4>
   <p>
-    Your hair shows tightly coiled zig-zag patterns (4B) with fewer strands overall due to low density. 
-    High porosity means your hair absorbs moisture quickly but also loses it just as fast, making 
-    consistent hydration and sealing especially important. Lightweight products help prevent 
-    buildup while maintaining volume and definition.
+Your curls display tightly coiled, zig-zag patterns typical of Type 4B hair. With low density, there are fewer strands per square inch, which can make styles look lighter or less full.
+Because your hair has high porosity, it quickly absorbs moisture but also loses it just as fast. This makes consistent hydration and proper sealing essential to maintain balance.
   </p>
 </div>
 
