@@ -25,8 +25,8 @@ export default function AnalysisPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState("");
-  const [curlType, setCurlType] = useState("3B");
-  const [porosity, setPorosity] = useState("Medium");
+  const [curlType, setCurlType] = useState("TCL4BHL");
+  // const [porosity, setPorosity] = useState("Medium");
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -133,7 +133,7 @@ export default function AnalysisPage() {
       const { extractedCurlType, extractedPorosity } =
         extractHairProperties(simulatedAnalysis);
       setCurlType(extractedCurlType);
-      setPorosity(extractedPorosity);
+      // setPorosity(extractedPorosity);
 
       await saveAnalysisToFirebase({
         name: userData.name.trim(),
@@ -358,16 +358,16 @@ export default function AnalysisPage() {
 
             <div className="p-8 bg-[#493979] border-t border-purple-700">
               <h3 className="text-2xl md:text-4xl font-medium text-white mb-10 text-center">
-                Personalized Care Plans for <br />{" "}
+                Personalized Hair Care Plans for <br /> {" "}
                 <span className="text-[#ff8589] text-xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
-                  Type {curlType}
+                  TCL Curl Type {curlType}
                 </span>{" "}
-                <span className="text-white inline-block pt-2 mt-2 mr-2">
+                {/* <span className="text-white inline-block pt-2 mt-2 mr-2">
                   Curls with{" "}
-                </span>
-                <span className="text-[#ff8589] text-xl md:text-2xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
+                </span> */}
+                {/* <span className="text-[#ff8589] text-xl md:text-2xl md:text-2xl font-bold bg-white rounded-lg px-2 py-1 inline-block mt-2">
                   {porosity} Porosity
-                </span>{" "}
+                </span>{" "} */}
               </h3>
 
               <div className="flex flex-col md:flex-row flex-wrap gap-4">
@@ -486,9 +486,7 @@ function generateSimulatedAnalysis(): string {
 </div>
 
       
-      <div>
-        <h4 class="text-lg font-medium mb-2"><strong class="font-bold">Porosity: </strong><span class="bg-[#fff1f2] px-2 py-1 rounded">Medium-High Porosity</span></h4>        <p class="text-gray-700">Your hair cuticles are moderately raised, meaning it absorbs moisture relatively easily but may lose it quickly without proper sealing.</p>
-      </div>
+    
       
       <!-- More detailed analysis would continue -->
     </div>
